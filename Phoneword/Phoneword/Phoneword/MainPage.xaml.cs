@@ -1,50 +1,19 @@
 ﻿using System;
+
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 using Xamarin.Essentials;
 
 namespace Phoneword
 {
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : ContentPage
     {
-        Entry phoneNumberText;
-        Button translateButton;
-        Button callButton;
         string translatedNumber;
 
         public MainPage()
         {
-            Padding = new Thickness(20, 20, 20, 20);
-            StackLayout pannel = new StackLayout
-            {
-                Spacing = 15
-            };
-
-            pannel.Children.Add(new Label
-            {
-                Text = "Enter a Phoneword:",
-                FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label))
-            });
-
-            pannel.Children.Add(phoneNumberText = new Entry
-            {
-                Text = "1-855-XAMARIN"
-            });
-
-            pannel.Children.Add(translateButton = new Button
-            {
-                Text = "Translate"
-            });
-
-            pannel.Children.Add(callButton = new Button
-            {
-                Text = "Call",
-                IsEnabled = false
-            });
-
-            translateButton.Clicked += OnTranslate;
-            callButton.Clicked += OnCall;
-
-            Content = pannel;
+            InitializeComponent();
         }
 
         void OnTranslate(object sender, EventArgs e)
